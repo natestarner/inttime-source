@@ -1,0 +1,30 @@
+### Health Check
+GET http://localhost:8080/actuator/health
+
+### ──────────────────────────────────────
+### User Endpoints
+### ──────────────────────────────────────
+
+### List all users
+GET http://localhost:8080/api/users
+Content-Type: application/json
+
+### Create a user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "securePassword123"
+}
+
+### Get user by ID
+GET http://localhost:8080/api/users/1
+
+### ──────────────────────────────────────
+### Lower Environment (switch target)
+### ──────────────────────────────────────
+
+### Health Check — Lower
+GET https://api-dev.yourdomain.com/actuator/health
