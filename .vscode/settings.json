@@ -64,24 +64,5 @@
   "playwright.reuseBrowser": true,
 
   // SQL Server connection (for the mssql extension)
-  "mssql.connections": [
-    {
-      "server": "localhost,1433",
-      "database": "inttime",
-      "authenticationType": "SqlLogin",
-      "user": "sa",
-      "password": "",
-      "savePassword": true,
-      "profileName": "inttime local db",
-      "groupId": "ROOT",
-      "id": "4c02836a-e46d-4a59-a46a-c7d4dbd35777",
-      "profileSource": 0,
-      "trustServerCertificate": true,
-      "connectTimeout": 15,
-      "commandTimeout": 30,
-      "applicationName": "vscode-mssql",
-      "encrypt": "Mandatory",
-      "containerName": "inttime-sqlserver"
-    }
-  ]
+  "mssql.connections": []
 }
