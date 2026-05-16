@@ -62,6 +62,8 @@ docker start inttime-sqlserver
   - TOP(n) not LIMIT n
   - ISNULL() not IFNULL() or COALESCE() (though COALESCE works in T-SQL too)
 - Database schema changes go in Flyway migration files, never manual DDL
+- CORS is configured globally in CorsConfig.java — do not add @CrossOrigin to individual controllers
+- Allowed origins come from the CORS_ALLOWED_ORIGINS environment variable, not hardcoded values
 - Never set `spring.jpa.hibernate.ddl-auto` to anything other than `validate`
 - REST endpoints use the `/api/...` prefix; the Vite dev server proxies `/api` and `/actuator` to `localhost:8080`
 
