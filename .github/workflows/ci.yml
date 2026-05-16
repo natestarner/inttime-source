@@ -1,8 +1,9 @@
 name: CI — Build, Test & Promote to Lower
 
 on:
-  push:
-    branches: [main]
+  push: # Runs on push to ANY branch
+  pull_request:
+    branches: [main] # Also runs when a PR targets main
 
 env:
   GHCR_REGISTRY: ghcr.io
@@ -81,10 +82,12 @@ jobs:
 
   # ──────────────────────────────────────────────
   # Job 3: Build and push Docker image
+  # Only runs on pushes to main (not feature branches or PRs)
   # ──────────────────────────────────────────────
   docker-build:
     runs-on: ubuntu-latest
     needs: [backend-ci]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       packages: write
       contents: read
@@ -125,10 +128,12 @@ jobs:
 
   # ──────────────────────────────────────────────
   # Job 4: Update the deploy repo (lower branch)
+  # Only runs on pushes to main (not feature branches or PRs)
   # ──────────────────────────────────────────────
   promote-to-lower:
     runs-on: ubuntu-latest
     needs: [backend-ci, frontend-ci, docker-build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout deploy repo
